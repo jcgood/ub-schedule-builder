@@ -370,6 +370,17 @@
   .box.rel-coreq-immediate { background: var(--rel-coreq-imm) !important; color: #fff; }
   .box.rel-postreq { background: var(--rel-postreq) !important; color: #fff; }
   .box.rel-postcoreq { background: var(--rel-postcoreq) !important; color: #06282a; }
+  /* Eyebrow tags set their own colour (golden-brown / dim grey, tuned for
+     the unhighlighted box), so on a highlight background they'd keep it
+     and drop far below contrast - e.g. brown on the dark-teal corequisite
+     state, very visible once UBC 399 started highlighting every UB
+     Curriculum box (2026-09-29). Inherit the highlight's own text colour. */
+  .box.rel-prereq-sequence .box-eyebrow-tag, .box.rel-prereq-sequence .box-eyebrow-sep,
+  .box.rel-prereq-immediate .box-eyebrow-tag, .box.rel-prereq-immediate .box-eyebrow-sep,
+  .box.rel-coreq-sequence .box-eyebrow-tag, .box.rel-coreq-sequence .box-eyebrow-sep,
+  .box.rel-coreq-immediate .box-eyebrow-tag, .box.rel-coreq-immediate .box-eyebrow-sep,
+  .box.rel-postreq .box-eyebrow-tag, .box.rel-postreq .box-eyebrow-sep,
+  .box.rel-postcoreq .box-eyebrow-tag, .box.rel-postcoreq .box-eyebrow-sep { color: inherit; }
   .col-total {
     font-size: 0.68rem;
     color: var(--cas-blue);
