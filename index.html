@@ -1102,8 +1102,12 @@
       // MAPPED_GENERIC_SLOTS): the Catalog's own rule, quoted verbatim,
       // then every eligible course with its credits.
       if (detail.catalog_rule) {
+        // One verbatim quote, or several (one per Catalog line) for a slot
+        // that stands for more than one rule, e.g. Psychology BS's
+        // "PSY 400 level".
+        var rules = Array.isArray(detail.catalog_rule) ? detail.catalog_rule : [detail.catalog_rule];
         html += '<blockquote class="detail-rule"><span class="detail-rule-src">The Catalog\'s requirement:</span>' +
-          escapeHtml(detail.catalog_rule) + "</blockquote>";
+          rules.map(escapeHtml).join("<br>") + "</blockquote>";
       }
       if (detail.credit_range_note) html += "<p>" + escapeHtml(detail.credit_range_note) + "</p>";
       (detail.groups || []).forEach(function (g) {
